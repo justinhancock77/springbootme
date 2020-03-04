@@ -1,0 +1,167 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	
+	<changeSet author="Justin Hancock" id="jhancock">
+		<createTable remarks="user table"
+			tableName="users">
+			<column name="id" type="UUID" >
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="email" type="varchar(100)" />
+			<column name="first_name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="last_name" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="organization_id" type="UUID" >
+				<constraints nullable="false" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable remarks="organization table"
+			tableName="organization">
+			<column name="id" type="UUID" >
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name = "org_name" type="varchar(100)">
+				<constraints nullable = "false" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable remarks="address table"
+			tableName="address">
+			<column name="id" type="UUID" >
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name = "street1" type="varchar(100)">
+				<constraints nullable = "false" />
+			</column>
+			<column name = "street2" type="varchar(100)">
+				<constraints nullable = "true" />
+			</column>
+			<column name = "state" type="varchar(20)">
+				<constraints nullable = "false" />
+			</column>
+			<column name = "zip" type="varchar(10)">
+				<constraints nullable = "false" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable remarks="roles table"
+			tableName="role">
+			<column name="id" type="UUID" >
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name = "role_name" type="varchar(20)">
+				<constraints nullable = "false" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable remarks="user roles table"
+			tableName="user_role">
+			<column name="id" type="UUID" >
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name = "role_name" type="varchar(20)">
+				<constraints nullable = "false" />
+			</column>
+			<column name = "user_id" type="varchar(80)">
+				<constraints nullable = "false" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>

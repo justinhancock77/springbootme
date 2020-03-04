@@ -1,0 +1,16 @@
+version: "3"
+services:
+  db:
+    image: "postgres:11"
+    container_name: "my_postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: springbootme
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+volumes:
+  my_dbdata:
+ 
