@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.springbootme.repository.OrganizationRepository;
-import com.springbootme.repository.UserRepository;
+import com.springbootme.repository.UserRepositoryJustin;
 import com.springbootme.social.config.AppProperties;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ public class Application {
 	@Autowired
 	private OrganizationRepository orgRepo;
 	@Autowired
-	private UserRepository repo;
+	private UserRepositoryJustin repo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

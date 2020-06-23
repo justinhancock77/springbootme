@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springbootme.domain.User;
-import com.springbootme.repository.UserRepository;
+import com.springbootme.repository.UserRepositoryJustin;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class HelloController {
 	
 	@Autowired
-	UserRepository uRepo;
+	UserRepositoryJustin uRepo;
 	
 	@RequestMapping("/")
     public String index() {
