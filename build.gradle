@@ -33,14 +33,22 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.4")
     annotationProcessor 'org.projectlombok:lombok:1.18.4'
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.postgresql:postgresql')
 	compile('org.hibernate:hibernate-core:5.4.2.Final')
 	compile('org.liquibase:liquibase-core')
-    testCompile("org.springframework.security:spring-security-test")
-    testCompile("org.springframework.boot:spring-boot-starter-security")
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
-compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.2.0.RELEASE'
+    //testCompile("org.springframework.security:spring-security-test")
+    //testCompile("org.springframework.boot:spring-boot-starter-security")
+    
+    compile group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.3.3.RELEASE'
+    
+    
+    compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    
+	
+
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.2.0.RELEASE'
+
+	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '1.0.0.RELEASE'
     
 }
 

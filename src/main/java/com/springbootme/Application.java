@@ -1,25 +1,24 @@
 package com.springbootme;
 
 import java.util.Arrays;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.springbootme.domain.Organization;
-import com.springbootme.domain.Role;
-import com.springbootme.domain.User;
 import com.springbootme.repository.OrganizationRepository;
 import com.springbootme.repository.UserRepository;
+import com.springbootme.social.config.AppProperties;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootApplication
+@EnableConfigurationProperties(AppProperties.class)
 public class Application {
 
 	@Autowired
