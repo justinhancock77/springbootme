@@ -4,42 +4,10 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 	
 	
+	
+	
 	<changeSet author="Justin Hancock" id="jhancock">
-		<createTable remarks="user table"
-			tableName="users">
-			<column name="id" type="UUID" >
-				<constraints primaryKey="true" nullable="false" />
-			</column>
-			<column name="email" type="varchar(100)" />
-			<column name="first_name" type="varchar(50)">
-				<constraints nullable="false" />
-			</column>
-			<column name="last_name" type="varchar(50)">
-				<constraints nullable="false" />
-			</column>
-			<column name="description" type="varchar(50)">
-				<constraints nullable="true" />
-			</column>
-			<column name="organization_id" type="UUID" >
-				<constraints nullable="false" />
-			</column>
-			<column name="created" type="timestamp" defaultValue="now()">
-				<constraints nullable="false" />
-			</column>
-			<column name="updated" type="timestamp" defaultValue="now()">
-				<constraints nullable="false" />
-			</column>
-			<column name="created_by" type="varchar(100)" defaultValue="admin">
-				<constraints nullable="false" />
-			</column>
-			<column name="updated_by" type="varchar(100)" defaultValue="admin">
-				<constraints nullable="false" />
-			</column>
-			<column name="active" type="boolean" defaultValue="true">
-				<constraints nullable="false" />
-			</column>
-		</createTable>
-		
+	
 		<createTable remarks="organization table"
 			tableName="organization">
 			<column name="id" type="UUID" >
@@ -67,6 +35,63 @@
 				<constraints nullable="false" />
 			</column>
 		</createTable>
+	
+	
+	
+		<createTable remarks="user table"
+			tableName="users">
+			<column name="id" type="UUID" defaultValue="uuid_generate_v4()">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="email" type="varchar(100)" />
+			<column name="first_name" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="last_name" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="description" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="owning_org_id" type="UUID">
+				<constraints nullable="true" />
+			</column>
+			<column name="created" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated" type="timestamp" defaultValue="now()">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="updated_by" type="varchar(100)" defaultValue="admin">
+				<constraints nullable="false" />
+			</column>
+			<column name="active" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+			<column name="email_verified" type="boolean" defaultValue="false">
+				<constraints nullable="false" />
+			</column>
+			<column name="image_url" type="varchar(160)">
+				<constraints nullable="true" />
+			</column>
+			<column name="name" type="varchar(80)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(160))">
+				<constraints nullable="true" />
+			</column>
+			<column name="provider" type="varchar(160)">
+				<constraints nullable="true" />
+			</column>
+			<column name="provider_id" type="varchar(160)">
+				<constraints nullable="true" />
+			</column>
+		</createTable>
+		
+		
 		
 		<createTable remarks="address table"
 			tableName="address">

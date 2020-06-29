@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 spring:
   datasource:
     driver-class-name: org.hibernate.dialect.PostgreSQLDialect
@@ -11,7 +11,7 @@ spring:
   jpa:
       show-sql: true
       hibernate:
-          ddl-auto: none
+          ddl-auto: update
           naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
       properties:
           hibernate:
@@ -28,8 +28,8 @@ spring:
                 - email
                 - profile
             facebook:
-              clientId: 121189305185277
-              clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+              clientId: 2619433104999182
+              clientSecret: d093daff9cbe1410983981e0dc6c346b
               redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
               scope:
                 - email

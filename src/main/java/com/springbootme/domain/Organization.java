@@ -4,14 +4,19 @@
 package com.springbootme.domain;
 
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.SortNatural;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,14 +40,19 @@ public class Organization extends DomainObjectImpl {
 	
 	private String orgName;
 	
+	@JsonIgnore
 	private Set<User> users;
 	
-	@OneToMany(mappedBy="id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	public Set<User> getUsers() {
-		return this.users;
+	@SortNatural
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="owningOrg", targetEntity=User.class) 
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
+	public Set<User> getUsers()
+	{
+		return users == null ? new TreeSet<User>() : users;
 	}
-	
-	public void setUsers(Set<User> users) {
+
+	public void setUsers(Set<User> users)
+	{
 		this.users = users;
 	}
 	

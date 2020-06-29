@@ -1,12 +1,7 @@
 package com.springbootme.social.security.oauth2;
 
-import com.springbootme.social.exception.OAuth2AuthenticationProcessingException;
-import com.springbootme.social.model.AuthProvider;
-import com.springbootme.social.model.User;
-import com.springbootme.social.repository.UserRepository;
-import com.springbootme.social.security.UserPrincipal;
-import com.springbootme.social.security.oauth2.user.OAuth2UserInfo;
-import com.springbootme.social.security.oauth2.user.OAuth2UserInfoFactory;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -18,13 +13,24 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Optional;
+import com.springbootme.domain.Organization;
+import com.springbootme.domain.User;
+import com.springbootme.repository.OrganizationRepository;
+import com.springbootme.repository.UserRepositoryJustin;
+import com.springbootme.social.exception.OAuth2AuthenticationProcessingException;
+import com.springbootme.social.model.AuthProvider;
+import com.springbootme.social.security.UserPrincipal;
+import com.springbootme.social.security.oauth2.user.OAuth2UserInfo;
+import com.springbootme.social.security.oauth2.user.OAuth2UserInfoFactory;
 
 @Service
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepositoryJustin userRepository;
+    
+    @Autowired 
+    private OrganizationRepository orgRepo;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -71,6 +77,11 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setName(oAuth2UserInfo.getName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
+        
+        Organization payback = orgRepo.findById(UUID.fromString("edda3591-c9a0-4882-8beb-2950ce9bf25b"));
+        
+        
+        user.setOwningOrg(payback);
         return userRepository.save(user);
     }
 

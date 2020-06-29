@@ -2,7 +2,7 @@ package com.springbootme.social.controller;
 
 import com.springbootme.social.exception.BadRequestException;
 import com.springbootme.social.model.AuthProvider;
-import com.springbootme.social.model.User;
+import com.springbootme.domain.User;
 import com.springbootme.social.payload.ApiResponse;
 import com.springbootme.social.payload.AuthResponse;
 import com.springbootme.social.payload.LoginRequest;
